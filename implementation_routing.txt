@@ -1,0 +1,87 @@
+Modular Routing System - Implementation Plan
+Create a clean, organized routing system with three routing components in a structured folder hierarchy.
+
+User Review Required
+IMPORTANT
+
+Folder Structure: Creating routing_system folder with:
+
+handlers/ - Core routing logic (master_router, navigation, medical, general_tools)
+tools/
+ - Tool declarations for voice agent
+config/ - Configuration files (workflow configs, site lists)
+main.py - Entry point for the voice agent
+Three Routing Components:
+
+Navigation: Page/website navigation (Google, Gemini, settings, etc.)
+Medical Extraction: Clinical query extraction (organ, site, procedure, test)
+General Tools: API tools (weather, news, crypto, jokes, etc.)
+Proposed Changes
+New Folder Structure
+routing_system/
+├── handlers/
+│   ├── __init__.py
+│   ├── master_router.py      # Main router that classifies and routes
+│   ├── navigation.py          # Navigation routing
+│   ├── medical_extraction.py  # Medical info extraction
+│   └── general_tools.py       # Weather, news, jokes, etc.
+├── tools/
+│   ├── __init__.py
+│   └── tool_declarations.py   # All tool declarations for voice agent
+├── config/
+│   ├── __init__.py
+│   ├── medical_sites.py       # Valid GIT sites
+│   └── workflow_config.py     # General tools configuration
+├── main.py                    # Voice agent entry point
+└── README.md                  # Documentation
+Core Components
+[NEW] 
+routing_system/handlers/master_router.py
+Unified router that classifies query intent
+Routes to: navigation, medical, or general tools
+Returns structured responses
+[NEW] 
+routing_system/handlers/navigation.py
+Moved from root navigation.py
+Handles page/website navigation
+[NEW] 
+routing_system/handlers/medical_extraction.py
+Moved from root medical_extraction.py
+Extracts medical information from queries
+[NEW] 
+routing_system/handlers/general_tools.py
+Extracted from final_tool.py
+Handles weather, news, crypto, jokes, quotes, etc.
+[NEW] 
+routing_system/tools/tool_declarations.py
+Centralizes all tool declarations
+Provides unified interface for voice agent
+[NEW] 
+routing_system/config/medical_sites.py
+Valid GIT sites configuration
+Separated from medical_extraction logic
+[NEW] 
+routing_system/config/workflow_config.py
+General tools workflow configuration
+API endpoints, prompt templates
+[NEW] 
+routing_system/main.py
+Voice agent with all three routing components
+Updated from final.py
+[NEW] 
+routing_system/README.md
+Usage documentation
+Architecture overview
+Examples
+Verification Plan
+Automated Tests
+Test navigation: "go to Google"
+Test medical: "biopsy from antrum"
+Test general tools: "what's the weather in Surat?"
+Verify all return structured responses
+Manual Verification
+Run voice agent with integrated router
+Test all three routing paths via voice
+Verify browser opens for navigation
+Verify medical JSON extraction
+Verify API calls for weather/news

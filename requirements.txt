@@ -1,0 +1,14 @@
+
+google-genai==0.2.2
+
+# Audio processing library
+PyAudio==0.2.14
+
+# Environment variable management
+python-dotenv==1.0.1
+
+
+
+
+
+
